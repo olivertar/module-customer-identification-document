@@ -2,7 +2,7 @@
   "name": "mugar/module-customer-identification-document",
   "description": "Customer Identification Module",
   "type": "magento2-module",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "require": {
     "php": "~7.1.0|~7.2.0"
   },

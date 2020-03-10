@@ -12,23 +12,39 @@
 namespace Mugar\CustomerIdentificationDocument\Plugin;
 
 use Magento\Checkout\Block\Checkout\LayoutProcessor;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Mugar\CustomerIdentificationDocument\Helper\Data;
 
 class CidConfiguration {
+
+    /**
+     * Mugar\CustomerIdentificationDocument\Helper\Data
+     * @var Data
+     */
+    protected $helper;
+
+    /**
+     * CidConfiguration constructor.
+     * @param Data $helper
+     */
+    public function __construct(
+        Data $helper
+    ) {
+        $this->helper = $helper;
+    }
 
     public function afterProcess(
         LayoutProcessor $processor,
         array $jsLayout
     ){
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $shipping_enable = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('checkout/cid/shipping_enabled');
-        $billing_enable = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('checkout/cid/billing_enabled');
-
-        if(!$shipping_enable){
-            $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']['shippingAddress']['children']['cid-shipping-form']['config']['componentDisabled'] = true;
+        if (!$this->helper->isShippingEnabled()) {
+            $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
+            ['shippingAddress']['children']['cid-shipping-form']['config']['componentDisabled'] = true;
         }
-        
-        if(!$billing_enable){
-            $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']['payment']['children']['cid-billing-form']['config']['componentDisabled'] = true;
+
+        if (!$this->helper->isBillingEnabled()) {
+            $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
+            ['payment']['children']['cid-billing-form']['config']['componentDisabled'] = true;
         }
 
         return $jsLayout;
