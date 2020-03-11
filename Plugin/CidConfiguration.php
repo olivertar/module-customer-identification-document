@@ -37,9 +37,6 @@ class CidConfiguration
         LayoutProcessor $processor,
         array $jsLayout
     ) {
-        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/oliverio.log');
-        $logger = new \Zend\Log\Logger();
-        $logger->addWriter($writer);
 
         if (!$this->helper->isShippingEnabled()) {
             $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
@@ -51,20 +48,26 @@ class CidConfiguration
             ['payment']['children']['cid-billing-form']['config']['componentDisabled'] = true;
         }
 
-        $currentOptions = $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
+        $currentShippingOptions = $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
         ['shippingAddress']['children']['cid-shipping-form']['children']['cid-shipping-form-container']['children']['cid-shipping-form-fieldset']['children']['shipping_cid_type']['options'];
 
         foreach ($this->helper->getShippingDocumentTypes() as $k => $v) {
-            $currentOptions[] = ['value' => $k, 'label' => $v];
+            $currentShippingOptions[] = ['value' => $k, 'label' => $v];
         }
 
         $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
-        ['shippingAddress']['children']['cid-shipping-form']['children']['cid-shipping-form-container']['children']['cid-shipping-form-fieldset']['children']['shipping_cid_type']['options'] = $currentOptions;
+        ['shippingAddress']['children']['cid-shipping-form']['children']['cid-shipping-form-container']['children']['cid-shipping-form-fieldset']['children']['shipping_cid_type']['options'] = $currentShippingOptions;
+
+        $currentBillingOptions = $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
+        ['payment']['children']['cid-billing-form']['children']['cid-billing-form-container']['children']['cid-billing-form-fieldset']['children']['billing_cid_type']['options'];
+
+        foreach ($this->helper->getBillingDocumentTypes() as $k => $v) {
+            $currentBillingOptions[] = ['value' => $k, 'label' => $v];
+        }
 
         $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
-        ['payment']['children']['cid-billing-form']['children']['cid-billing-form-container']['children']['cid-billing-form-fieldset']['children']['billing_cid_type']['options'] = $currentOptions;
+        ['payment']['children']['cid-billing-form']['children']['cid-billing-form-container']['children']['cid-billing-form-fieldset']['children']['billing_cid_type']['options'] = $currentBillingOptions;
 
-        $logger->info(print_r($currentOptions, true));
         return $jsLayout;
     }
 }

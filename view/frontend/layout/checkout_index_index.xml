@@ -138,6 +138,7 @@
 																							<item name="label" xsi:type="string">Please select value</item>
 																							<item name="value" xsi:type="string"></item>
 																						</item>
+                                                                                        <!--
 																						<item name="1" xsi:type="array">
 																							<item name="label" xsi:type="string">DNI</item>
 																							<item name="value" xsi:type="string">DNI</item>
@@ -150,6 +151,7 @@
 																							<item name="label" xsi:type="string">Passport</item>
 																							<item name="value" xsi:type="string">Passport</item>
 																						</item>
+																						-->
 																					</item>
 																					<item name="provider" xsi:type="string">checkoutProvider</item>
 																					<item name="dataScope" xsi:type="string">cidBillingForm.billing_cid_type</item>
