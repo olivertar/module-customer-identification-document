@@ -5,6 +5,8 @@
         	<cid>
         		<shipping_enabled>0</shipping_enabled>
         		<billing_enabled>0</billing_enabled>
+                <shipping_types>1</shipping_types>
+                <billing_types>1</billing_types>
         	</cid>
         </checkout>
     </default>

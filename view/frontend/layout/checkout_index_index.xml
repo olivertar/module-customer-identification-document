@@ -45,7 +45,7 @@
 																							<item name="label" xsi:type="string">Please select value</item>
 																							<item name="value" xsi:type="string"></item>
 																						</item>
-																						<item name="1" xsi:type="array">
+																						<!--<item name="1" xsi:type="array">
 																							<item name="label" xsi:type="string">DNI</item>
 																							<item name="value" xsi:type="string">DNI</item>
 																						</item>
@@ -57,6 +57,7 @@
 																							<item name="label" xsi:type="string">Passport</item>
 																							<item name="value" xsi:type="string">Passport</item>
 																						</item>
+																						-->
 																					</item>
 																					<item name="provider" xsi:type="string">checkoutProvider</item>
 																					<item name="dataScope" xsi:type="string">cidShippingForm.shipping_cid_type</item>
@@ -121,7 +122,7 @@
                                                                         <item name="cid-billing-form-fieldset" xsi:type="array">
                                                                             <item name="component" xsi:type="string">uiComponent</item>
                                                                             <item name="displayArea" xsi:type="string">cid-billing-form-fields</item>
-                                                                            
+
                                                                             <item name="children" xsi:type="array">
 																				<item name="billing_cid_type" xsi:type="array">
 																					<item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
@@ -158,7 +159,7 @@
 																					    <item name="half-row" xsi:type="boolean">true</item>
 																						<item name="half-row-left" xsi:type="boolean">true</item>
 																					</item>
-																				</item>                                                                                
+																				</item>
                                                                                 <item name="billing_cid_number" xsi:type="array">
                                                                                     <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
                                                                                     <item name="config" xsi:type="array">
