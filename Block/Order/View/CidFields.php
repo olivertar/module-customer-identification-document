@@ -9,7 +9,7 @@
  *
  */
 
-namespace Mugar\CustomerIdentificationDocument\Block\Order;
+namespace Mugar\CustomerIdentificationDocument\Block\Order\View;
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
