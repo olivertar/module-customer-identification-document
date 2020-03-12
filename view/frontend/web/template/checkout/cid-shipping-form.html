@@ -1,6 +1,6 @@
 <div class="cid-shipping-form">
 	<div class="step-title"
-          translate="'Identification Document'"
+          data-bind="text: getCidLabel()"
           data-role="title" />
 	<div class="cid-form-body">
 	    <form id="cid-shipping-form" class="form form-shipping-cid" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}, event: {change: onFormChange()}">

@@ -54,13 +54,12 @@ define([
         defaults: {
             template: 'Mugar_CustomerIdentificationDocument/shipping'
         },
-
         validateCidShippingForm: function () {
             this.source.set('params.invalid', false);
             this.source.trigger('cidShippingForm.data.validate');
             return this.source.get('params.invalid');
         },
-        
+
         validateShippingInformation: function () {
             var shippingAddress,
                 addressData,
@@ -87,7 +86,7 @@ define([
 
             if (this.isFormInline) {
                 this.source.set('params.invalid', false);
-                
+
                 this.triggerShippingDataValidateEvent();
 
                 if (emailValidationResult &&
@@ -141,7 +140,7 @@ define([
 
                 return false;
             }
-            
+
             /* validate cid fields */
             if(this.validateCidShippingForm()){
             	return false;

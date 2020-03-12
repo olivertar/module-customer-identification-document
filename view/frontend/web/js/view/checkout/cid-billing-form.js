@@ -39,6 +39,10 @@ define([
             return this;
         },
 
+        getCidLabel: function () {
+            return window.checkoutConfig.cid_billing_label;
+        },
+
         onFormSubmit: function () {
             console.log('onFormSubmit');
         },

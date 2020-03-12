@@ -26,7 +26,6 @@ define([
     'use strict';
 
     var mixin = {
-
         defaults: {
             template: 'Mugar_CustomerIdentificationDocument/payment'
         }

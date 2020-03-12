@@ -12,15 +12,37 @@
                     <label>Shipping Document Types</label>
                     <source_model>Mugar\CustomerIdentificationDocument\Model\Config\Source\Types</source_model>
                     <validate>required-entry validate-select</validate>
+                    <depends>
+                        <field id="shipping_enabled">1</field>
+                    </depends>
                 </field>
-                <field id="billing_enabled" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="shipping_label" translate="label comment" sortOrder="30" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Shipping Label</label>
+                    <comment>Text to show on shipping step.</comment>
+                    <depends>
+                        <field id="shipping_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="billing_enabled" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Show on Payment Step</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="billing_types" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="billing_types" translate="label" type="multiselect" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Billing Document Types</label>
                     <source_model>Mugar\CustomerIdentificationDocument\Model\Config\Source\Types</source_model>
                     <validate>required-entry validate-select</validate>
+                    <depends>
+                        <field id="billing_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="billing_label" translate="label comment" sortOrder="60" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Billing Label</label>
+                    <comment>Text to show on billing step.</comment>
+                    <depends>
+                        <field id="billing_enabled">1</field>
+                    </depends>
                 </field>
             </group>
         </section>
