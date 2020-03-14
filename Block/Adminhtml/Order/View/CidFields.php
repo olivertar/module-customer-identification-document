@@ -1,6 +1,9 @@
 <?php
 namespace Mugar\CustomerIdentificationDocument\Block\Adminhtml\Order\View;
 
+use Magento\Backend\Block\Template\Context;
+use Magento\Framework\Registry;
+use Magento\Sales\Helper\Admin;
 use Mugar\CustomerIdentificationDocument\Api\CidFieldsRepositoryInterface;
 
 class CidFields extends \Magento\Sales\Block\Adminhtml\Order\AbstractOrder
@@ -13,9 +16,9 @@ class CidFields extends \Magento\Sales\Block\Adminhtml\Order\AbstractOrder
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Sales\Helper\Admin $adminHelper,
+        Context $context,
+        Registry $registry,
+        Admin $adminHelper,
         CidFieldsRepositoryInterface $cidFieldsRepository,
         array $data = []
     ) {

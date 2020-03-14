@@ -44,7 +44,7 @@ define([
         },
 
         onFormSubmit: function () {
-            console.log('onFormSubmit');
+
         },
 
         onFormChange: function () {
@@ -73,7 +73,7 @@ define([
                     cidFields: formData
                 };
                 var result = true;
-                console.log(url);
+
                 $.ajax({
                     url: urlFormatter.build(url),
                     data: JSON.stringify(payload),
