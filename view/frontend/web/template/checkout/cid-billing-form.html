@@ -2,6 +2,7 @@
 	<div class="step-title"
          data-bind="text: getCidLabel()"
 	     data-role="title" />
+    <span data-bind="text: getCidDescription()"></span>
 	<div class="cid-form-body">
 	    <form id="cid-billing-form" class="form form-billing-cid" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}, event: {change: onFormChange()}">
 	        <fieldset class="fieldset">

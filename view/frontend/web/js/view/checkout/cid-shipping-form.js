@@ -37,6 +37,9 @@ define([
         getCidLabel: function () {
             return window.checkoutConfig.cid_shipping_label;
         },
+        getCidDescription: function() {
+            return window.checkoutConfig.cid_shipping_description;
+        },
         onFormChange: function () {
             this.saveCidFields();
         },

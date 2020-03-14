@@ -43,8 +43,13 @@ class DefaultConfigProviderPlugin
         DefaultConfigProvider $subject,
         $output
     ) {
-        $output['cid_shipping_label'] = $this->helper->getShippingLabel();
-        $output['cid_billing_label'] = $this->helper->getBillingLabel();
+        $moduleConfig = [
+            'cid_shipping_label'        => $this->helper->getShippingLabel(),
+            'cid_billing_label'         => $this->helper->getBillingLabel(),
+            'cid_shipping_description'  => $this->helper->getShippingDescription(),
+            'cid_billing_description'   => $this->helper->getBillingDescription()
+        ];
+        $output = array_merge($output, $moduleConfig);
         return $output;
     }
 }
