@@ -1,7 +1,8 @@
 <?php
+$cidModel = $block->getData('cid_model');
 $cidFields = $block->getCidFields($block->getOrder());
 ?>
-<?php if($cidFields): ?>
+<?php if ($cidFields = $cidModel->getCidFields()): ?>
     <div class="block block-order-details-view">
         <div class="block-title">
             <strong><?php /* @escapeNotVerified */ echo __('Identification Document') ?></strong>
