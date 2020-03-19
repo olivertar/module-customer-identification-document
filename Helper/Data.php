@@ -35,6 +35,10 @@ class Data extends AbstractHelper
     const BILLING_ENABLED = 'checkout/cid/billing_enabled';
     const SHIPPING_DOCUMENT_TYPES = 'checkout/cid/shipping_types';
     const BILLING_DOCUMENT_TYPES = 'checkout/cid/billing_types';
+    const SHIPPING_LABEL = 'checkout/cid/shipping_label';
+    const BILLING_LABEL = 'checkout/cid/billing_label';
+    const SHIPPING_DESCRIPTION = 'checkout/cid/shipping_description';
+    const BILLING_DESCRIPTION = 'checkout/cid/billing_description';
 
     /**
      * Magento\Framework\App\Config\ScopeConfigInterface
@@ -79,6 +83,58 @@ class Data extends AbstractHelper
     {
         $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
         return $this->getConfigValue(self::SHIPPING_ENABLED, $storeId);
+    }
+
+    /**
+     * Get shipping label
+     *
+     * @param null $store
+     * @return mixed
+     * @throws NoSuchEntityException
+     */
+    public function getShippingLabel($store = null)
+    {
+        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
+        return $this->getConfigValue(self::SHIPPING_LABEL, $storeId);
+    }
+
+    /**
+     * Get shipping description
+     *
+     * @param null $store
+     * @return mixed
+     * @throws NoSuchEntityException
+     */
+    public function getShippingDescription($store =  null)
+    {
+        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
+        return $this->getConfigValue(self::SHIPPING_DESCRIPTION, $storeId);
+    }
+
+    /**
+     * Get billing label
+     *
+     * @param null $store
+     * @return mixed
+     * @throws NoSuchEntityException
+     */
+    public function getBillingLabel($store = null)
+    {
+        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
+        return $this->getConfigValue(self::BILLING_LABEL, $storeId);
+    }
+
+    /**
+     * Get billing description
+     *
+     * @param null $store
+     * @return mixed
+     * @throws NoSuchEntityException
+     */
+    public function getBillingDescription($store = null)
+    {
+        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
+        return $this->getConfigValue(self::BILLING_DESCRIPTION, $storeId);
     }
 
     /**
