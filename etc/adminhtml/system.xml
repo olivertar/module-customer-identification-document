@@ -8,9 +8,19 @@
                     <label>Show on Shipping Step</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="billing_enabled" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="shipping_types" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping Document Types</label>
+                    <source_model>Mugar\CustomerIdentificationDocument\Model\Config\Source\Types</source_model>
+                    <validate>required-entry validate-select</validate>
+                </field>
+                <field id="billing_enabled" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Show on Payment Step</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="billing_types" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Billing Document Types</label>
+                    <source_model>Mugar\CustomerIdentificationDocument\Model\Config\Source\Types</source_model>
+                    <validate>required-entry validate-select</validate>
                 </field>
             </group>
         </section>

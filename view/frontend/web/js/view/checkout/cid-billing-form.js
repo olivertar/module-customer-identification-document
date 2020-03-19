@@ -17,9 +17,9 @@ define([
     return Component.extend({
         cidFields: ko.observable(null),
         formDatax: formData.cidBillingFieldsData,
-        
-        
-    
+
+
+
         initialize: function () {
             var self = this;
             this._super();
@@ -33,14 +33,14 @@ define([
             this.cidFields.subscribe(function(change){
                 self.formData(change);
             });
-            
-            
+
+
 
             return this;
         },
-        
+
         onFormSubmit: function () {
-            console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+
         },
 
         onFormChange: function () {
@@ -59,9 +59,9 @@ define([
                 var url;
 
                 if (isCustomer) {
-                    url = urlBuilder.createUrl('/carts/mine/set-order-cid-fields', {});
+                    url = urlBuilder.createUrl('/carts/mine/set-order-cid-billing-fields', {});
                 } else {
-                    url = urlBuilder.createUrl('/guest-carts/:cartId/set-order-cid-billing-field', {cartId: quoteId});
+                    url = urlBuilder.createUrl('/guest-carts/:cartId/set-order-cid-billing-fields', {cartId: quoteId});
                 }
 
                 var payload = {
@@ -69,6 +69,7 @@ define([
                     cidFields: formData
                 };
                 var result = true;
+
                 $.ajax({
                     url: urlFormatter.build(url),
                     data: JSON.stringify(payload),
