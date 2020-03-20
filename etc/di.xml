@@ -6,4 +6,7 @@
     <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
         <plugin name="cidConfiguration" type="Mugar\CustomerIdentificationDocument\Plugin\CidConfiguration"/>
     </type>
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="cidLabels" type="Mugar\CustomerIdentificationDocument\Plugin\DefaultConfigProviderPlugin" sortOrder="1" />
+    </type>
 </config>

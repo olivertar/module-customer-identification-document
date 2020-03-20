@@ -2,7 +2,11 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Mugar\CustomerIdentificationDocument\Block\Order\View\CidFields" as="ordercidfields" name="sales.order.cidfields" after="sales.order.info"  />
+            <block class="Magento\Framework\View\Element\Template" as="ordercidfields" name="sales.order.cidfields" after="sales.order.info" template="Mugar_CustomerIdentificationDocument::order/view/cid_fields.phtml">
+                <arguments>
+                    <argument name="cid_model" xsi:type="object">Mugar\CustomerIdentificationDocument\ViewModel\CidModel</argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>

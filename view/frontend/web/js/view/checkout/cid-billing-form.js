@@ -18,8 +18,6 @@ define([
         cidFields: ko.observable(null),
         formDatax: formData.cidBillingFieldsData,
 
-
-
         initialize: function () {
             var self = this;
             this._super();
@@ -29,14 +27,18 @@ define([
             if (formDataCached) {
                 formData = this.source.set('cidBillingForm', formDataCached);
             }
-
             this.cidFields.subscribe(function(change){
                 self.formData(change);
             });
-
-
-
             return this;
+        },
+
+        getCidLabel: function () {
+            return window.checkoutConfig.cid_billing_label;
+        },
+
+        getCidDescription: function() {
+            return window.checkoutConfig.cid_billing_description;
         },
 
         onFormSubmit: function () {
