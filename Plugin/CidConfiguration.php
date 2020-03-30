@@ -12,6 +12,7 @@
 namespace Mugar\CustomerIdentificationDocument\Plugin;
 
 use Magento\Checkout\Block\Checkout\LayoutProcessor;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Mugar\CustomerIdentificationDocument\Helper\Data;
 
 class CidConfiguration
@@ -33,6 +34,14 @@ class CidConfiguration
         $this->helper = $helper;
     }
 
+
+    /**
+     * After Process
+     * @param LayoutProcessor $processor
+     * @param array $jsLayout
+     * @return array
+     * @throws NoSuchEntityException
+     */
     public function afterProcess(
         LayoutProcessor $processor,
         array $jsLayout
