@@ -1,8 +1,7 @@
 <?php
 $cidModel = $block->getCidModel();
-$cidFields = $cidModel->getCidFields();
 ?>
-<?php if ($cidFields): ?>
+<?php if ($cidFields = $cidModel->getCidFields()): ?>
     <?php if ($cidFields->getShippingCidNumber() || $cidFields->getBillingCidNumber()): ?>
         <div class="block block-order-details-view">
             <div class="block-title">

@@ -19,7 +19,6 @@ use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Mugar\CustomerIdentificationDocument\Api\CidFieldsRepositoryInterface;
 use Mugar\CustomerIdentificationDocument\Api\Data\CidFieldsInterface;
-use Mugar\CustomerIdentificationDocument\Helper\Data;
 
 class CidModel implements ArgumentInterface
 {
@@ -40,29 +39,21 @@ class CidModel implements ArgumentInterface
     protected $request;
 
     /**
-     * @var Data
-     */
-    protected $helper;
-
-    /**
      * CidModel constructor.
      * @param CidFieldsRepositoryInterface $cidFieldsRepository
      * @param OrderRepositoryInterface $orderRepository
      * @param RequestInterface $requestInterface
-     * @param Data $helper
      * @param array $data
      */
     public function __construct(
         CidFieldsRepositoryInterface $cidFieldsRepository,
         OrderRepositoryInterface $orderRepository,
         RequestInterface $requestInterface,
-        Data $helper,
         array $data = []
     ) {
         $this->cidFieldsRepository = $cidFieldsRepository;
         $this->orderRepository = $orderRepository;
         $this->request = $requestInterface;
-        $this->helper = $helper;
     }
 
     /**
@@ -89,32 +80,9 @@ class CidModel implements ArgumentInterface
      */
     public function getCidFields()
     {
-        if (!$this->isBillingAllowed() && !$this->isShippingAllowed()) {
-            return false;
-        }
         if ($order = $this->getOrder()) {
             return $this->cidFieldsRepository->getCidFields($order);
         }
         return false;
-    }
-
-    /**
-     * Check if Cid is enabled on billing
-     * @return bool
-     * @throws NoSuchEntityException
-     */
-    public function isBillingAllowed()
-    {
-        return $this->helper->isBillingEnabled();
-    }
-
-    /**
-     * Check if Cid is enabled on shipping
-     * @return bool
-     * @throws NoSuchEntityException
-     */
-    public function isShippingAllowed()
-    {
-        return $this->helper->isShippingEnabled();
     }
 }
