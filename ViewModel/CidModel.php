@@ -11,13 +11,14 @@
 
 namespace Mugar\CustomerIdentificationDocument\ViewModel;
 
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Mugar\CustomerIdentificationDocument\Api\CidFieldsRepositoryInterface;
-use Magento\Framework\App\RequestInterface;
+use Mugar\CustomerIdentificationDocument\Api\Data\CidFieldsInterface;
 
 class CidModel implements ArgumentInterface
 {
@@ -55,6 +56,10 @@ class CidModel implements ArgumentInterface
         $this->request = $requestInterface;
     }
 
+    /**
+     * Get Order
+     * @return bool|Order
+     */
     protected function getOrder(): Order
     {
         $id = $this->request->getParam('order_id');
@@ -68,6 +73,11 @@ class CidModel implements ArgumentInterface
         return $order;
     }
 
+    /**
+     * Get Cid fields
+     * @return bool|CidFieldsInterface
+     * @throws NoSuchEntityException
+     */
     public function getCidFields()
     {
         if ($order = $this->getOrder()) {

@@ -1,25 +1,30 @@
 <?php
-$cidModel = $block->getData('cid_model');
-$cidFields = $block->getCidFields($block->getOrder());
+$cidModel = $block->getCidModel();
 ?>
 <?php if ($cidFields = $cidModel->getCidFields()): ?>
-    <div class="block block-order-details-view">
-        <div class="block-title">
-            <strong><?php /* @escapeNotVerified */ echo __('Identification Document') ?></strong>
-        </div>
-        <div class="block-content">
-            <div class="box">
-                <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Shipping') ?></span></strong>
-                <div class="box-content">
-                    <?php echo $this->escapeHtml($cidFields->getShippingCidType()); ?>: <?php echo $this->escapeHtml($cidFields->getShippingCidNumber()); ?><br>
-                </div>
+    <?php if ($cidFields->getShippingCidNumber() || $cidFields->getBillingCidNumber()): ?>
+        <div class="block block-order-details-view">
+            <div class="block-title">
+                <strong><?php /* @escapeNotVerified */ echo __('Identification Document') ?></strong>
             </div>
-            <div class="box">
-                <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Billing') ?></span></strong>
-                <div class="box-content">
-                    <?php echo $this->escapeHtml($cidFields->getBillingCidType()); ?>: <?php echo $this->escapeHtml($cidFields->getBillingCidNumber()); ?>
-                </div>
+            <div class="block-content">
+                <?php if ($cidFields->getShippingCidNumber()): ?>
+                    <div class="box">
+                        <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Shipping') ?></span></strong>
+                        <div class="box-content">
+                            <?php echo $this->escapeHtml($cidFields->getShippingCidType()); ?>: <?php echo $this->escapeHtml($cidFields->getShippingCidNumber()); ?><br>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($cidFields->getBillingCidNumber()): ?>
+                    <div class="box">
+                        <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Billing') ?></span></strong>
+                        <div class="box-content">
+                            <?php echo $this->escapeHtml($cidFields->getBillingCidType()); ?>: <?php echo $this->escapeHtml($cidFields->getBillingCidNumber()); ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
-    </div>
+    <?php endif; ?>
 <?php endif; ?>
