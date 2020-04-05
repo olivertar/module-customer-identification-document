@@ -45,19 +45,6 @@
 																							<item name="label" xsi:type="string">Please select value</item>
 																							<item name="value" xsi:type="string"></item>
 																						</item>
-																						<!--<item name="1" xsi:type="array">
-																							<item name="label" xsi:type="string">DNI</item>
-																							<item name="value" xsi:type="string">DNI</item>
-																						</item>
-																						<item name="2" xsi:type="array">
-																							<item name="label" xsi:type="string">CI</item>
-																							<item name="value" xsi:type="string">CI</item>
-																						</item>
-																						<item name="3" xsi:type="array">
-																							<item name="label" xsi:type="string">Passport</item>
-																							<item name="value" xsi:type="string">Passport</item>
-																						</item>
-																						-->
 																					</item>
 																					<item name="provider" xsi:type="string">checkoutProvider</item>
 																					<item name="dataScope" xsi:type="string">cidShippingForm.shipping_cid_type</item>
@@ -78,10 +65,10 @@
                                                                                             <item name="description" xsi:type="string" translate="true">For shipping purposes</item>
                                                                                         </item>
                                                                                     </item>
- 																					<item name="validation" xsi:type="array">
-                                                                                       	<item name="pattern" xsi:type="string">^[0-9]{6,8}$</item>
-                                                                                       	<item name="required-entry" xsi:type="boolean">true</item>
-                                                                                   	</item>
+                                                                                    <item name="validation" xsi:type="array">
+                                                                                        <item name="cid-validation" xsi:type="boolean">true</item>
+                                                                                        <item name="required-entry" xsi:type="boolean">true</item>
+                                                                                    </item>
                                                                                     <item name="provider" xsi:type="string">checkoutProvider</item>
                                                                                     <item name="dataScope" xsi:type="string">cidShippingForm.shipping_cid_number</item>
                                                                                     <item name="label" xsi:type="string">Number</item>
@@ -129,29 +116,15 @@
 																					<item name="config" xsi:type="array">
 																						<item name="customScope" xsi:type="string">cidBillingForm</item>
 																						<item name="template" xsi:type="string">ui/form/field</item>
-																						<item name="validation" xsi:type="array">
-																						    <item name="required-entry" xsi:type="boolean">true</item>
-																						</item>
+                                                                                        <item name="validation" xsi:type="array">
+                                                                                            <item name="required-entry" xsi:type="boolean">true</item>
+                                                                                        </item>
 																					</item>
 																					<item name="options" xsi:type="array">
 																						<item name="0" xsi:type="array">
 																							<item name="label" xsi:type="string">Please select value</item>
 																							<item name="value" xsi:type="string"></item>
 																						</item>
-                                                                                        <!--
-																						<item name="1" xsi:type="array">
-																							<item name="label" xsi:type="string">DNI</item>
-																							<item name="value" xsi:type="string">DNI</item>
-																						</item>
-																						<item name="2" xsi:type="array">
-																							<item name="label" xsi:type="string">CI</item>
-																							<item name="value" xsi:type="string">CI</item>
-																						</item>
-																						<item name="3" xsi:type="array">
-																							<item name="label" xsi:type="string">Passport</item>
-																							<item name="value" xsi:type="string">Passport</item>
-																						</item>
-																						-->
 																					</item>
 																					<item name="provider" xsi:type="string">checkoutProvider</item>
 																					<item name="dataScope" xsi:type="string">cidBillingForm.billing_cid_type</item>
@@ -173,7 +146,7 @@
                                                                                         </item>
                                                                                     </item>
  																					<item name="validation" xsi:type="array">
-                                                                                       	<item name="pattern" xsi:type="string">^[0-9]{6,8}$</item>
+                                                                                       	<item name="cid-validation" xsi:type="boolean">true</item>
                                                                                        	<item name="required-entry" xsi:type="boolean">true</item>
                                                                                    	</item>
                                                                                     <item name="provider" xsi:type="string">checkoutProvider</item>
