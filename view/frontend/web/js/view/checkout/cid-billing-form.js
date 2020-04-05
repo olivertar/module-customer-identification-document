@@ -20,7 +20,7 @@ define([
         initialize: function () {
             var self = this;
             this._super();
-            additionalValidators.registerValidator(formData);
+            //additionalValidators.registerValidator(formData);
             formData = this.source.get('cidBillingForm');
             var formDataCached = cartCache.get('cid-billing-form');
             if (formDataCached) {

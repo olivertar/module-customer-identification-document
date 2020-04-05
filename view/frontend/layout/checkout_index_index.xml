@@ -66,8 +66,8 @@
                                                                                         </item>
                                                                                     </item>
                                                                                     <item name="validation" xsi:type="array">
-                                                                                        <item name="cid-validation" xsi:type="boolean">true</item>
                                                                                         <item name="required-entry" xsi:type="boolean">true</item>
+                                                                                        <item name="cid-validation" xsi:type="boolean">true</item>
                                                                                     </item>
                                                                                     <item name="provider" xsi:type="string">checkoutProvider</item>
                                                                                     <item name="dataScope" xsi:type="string">cidShippingForm.shipping_cid_number</item>
@@ -146,8 +146,8 @@
                                                                                         </item>
                                                                                     </item>
  																					<item name="validation" xsi:type="array">
+                                                                                        <item name="required-entry" xsi:type="boolean">true</item>
                                                                                        	<item name="cid-validation" xsi:type="boolean">true</item>
-                                                                                       	<item name="required-entry" xsi:type="boolean">true</item>
                                                                                    	</item>
                                                                                     <item name="provider" xsi:type="string">checkoutProvider</item>
                                                                                     <item name="dataScope" xsi:type="string">cidBillingForm.billing_cid_number</item>

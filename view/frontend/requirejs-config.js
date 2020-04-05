@@ -7,7 +7,7 @@ var config = {
             'Magento_Checkout/js/view/payment': {
                 'Mugar_CustomerIdentificationDocument/js/view/payment-mixin': true
             },
-            'Magento_Ui/js/lib/validation/rules': {
+            'Magento_Ui/js/lib/validation/validator': {
                 'Mugar_CustomerIdentificationDocument/js/validator-mixin': true
             }
         }
