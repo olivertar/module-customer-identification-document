@@ -11,10 +11,10 @@
 
 namespace Mugar\CustomerIdentificationDocument\Model;
 
-use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Mugar\CustomerIdentificationDocument\Api\CidFieldsRepositoryInterface;
 use Mugar\CustomerIdentificationDocument\Api\Data\CidFieldsInterface;
@@ -27,6 +27,12 @@ class CidFieldsRepository implements CidFieldsRepositoryInterface
 
     protected $cidFields;
 
+    /**
+     * CidFieldsRepository constructor.
+     * @param CartRepositoryInterface $cartRepository
+     * @param ScopeConfigInterface $scopeConfig
+     * @param CidFieldsInterface $cidFields
+     */
     public function __construct(
         CartRepositoryInterface $cartRepository,
         ScopeConfigInterface $scopeConfig,
@@ -37,7 +43,16 @@ class CidFieldsRepository implements CidFieldsRepositoryInterface
         $this->cidFields   = $cidFields;
     }
 
-    public function saveCidFields(int $cartId, CidFieldsInterface $cidFields): CidFieldsInterface {
+    /**
+     * Save Cid Shipping Fields
+     * @param int $cartId
+     * @param CidFieldsInterface $cidFields
+     * @return CidFieldsInterface
+     * @throws CouldNotSaveException
+     * @throws NoSuchEntityException
+     */
+    public function saveCidFields(int $cartId, CidFieldsInterface $cidFields): CidFieldsInterface
+    {
         $cart = $this->cartRepository->getActive($cartId);
         if (!$cart->getItemsCount()) {
             throw new NoSuchEntityException(__('Cart %1 is empty', $cartId));
@@ -60,31 +75,46 @@ class CidFieldsRepository implements CidFieldsRepositoryInterface
 
         return $cidFields;
     }
-    
-    public function saveCidBillingFields(int $cartId, CidFieldsInterface $cidFields): CidFieldsInterface {
+
+    /**
+     * Save Cid Billing Fields
+     * @param int $cartId
+     * @param CidFieldsInterface $cidFields
+     * @return CidFieldsInterface
+     * @throws CouldNotSaveException
+     * @throws NoSuchEntityException
+     */
+    public function saveCidBillingFields(int $cartId, CidFieldsInterface $cidFields): CidFieldsInterface
+    {
         $cart = $this->cartRepository->getActive($cartId);
         if (!$cart->getItemsCount()) {
             throw new NoSuchEntityException(__('Cart %1 is empty', $cartId));
         }
-        
+
         try {
             $cart->setData(
                 CidFieldsInterface::BILLING_CID_TYPE,
                 $cidFields->getBillingCidType()
-                );
+            );
             $cart->setData(
                 CidFieldsInterface::BILLING_CID_NUMBER,
                 $cidFields->getBillingCidNumber()
-                );
-            
+            );
+
             $this->cartRepository->save($cart);
         } catch (\Exception $e) {
             throw new CouldNotSaveException(__('Customer identification document billing data could not be saved!'));
         }
-        
+
         return $cidFields;
     }
 
+    /**
+     * Get Cid Fields
+     * @param Order $order
+     * @return CidFieldsInterface
+     * @throws NoSuchEntityException
+     */
     public function getCidFields(Order $order): CidFieldsInterface
     {
         if (!$order->getId()) {
