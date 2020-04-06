@@ -54,7 +54,7 @@ define([
                 if (isCustomer) {
                     url = urlBuilder.createUrl('/carts/mine/set-order-cid-fields', {});
                 } else {
-                    url = urlBuilder.createUrl('/guest-carts/:cartId/set-order-cid-field', {cartId: quoteId});
+                    url = urlBuilder.createUrl('/guest-carts/:cartId/set-order-cid-fields', {cartId: quoteId});
                 }
 
                 var payload = {

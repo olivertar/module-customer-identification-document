@@ -1,16 +1,25 @@
-define([
-    'jquery'
-], function($) {
-    return function(validator) {
-        validator.addRule(
-            'cid-validation',
-            function (value) {
+define(
+    [
+        'jquery',
+        'mage/validation'
+    ],
+    function ($) {
+        'use strict';
+
+        return {
+
+            /**
+             * Validate checkout agreements
+             *
+             * @returns {Boolean}
+             */
+            validate: function () {
                 let isValid = false;
+                if (!$('[name="billing_cid_number"]').length) return true;
+
+                let value = $('[name="billing_cid_number"]').val();
                 if (value!=='') {
-                    let cidFieldType  = $('[name="shipping_cid_type"]').length ?
-                        $('[name="shipping_cid_type"]').val() :
-                        $('[name="billing_cid_type"]').val();
-                    switch (cidFieldType) {
+                    switch ($('[name="billing_cid_type"]').val()) {
                         case 'DNI':
                             let ex_regular_dni = /^\d{8}(?:[-\s]\d{4})?$/;
                             if (ex_regular_dni.test(value) == true) {
@@ -32,9 +41,7 @@ define([
                     }
                 }
                 return isValid;
-            },
-            $.mage.__('Document format invalid')
-        );
-        return validator;
+            }
+        };
     }
-});
+);

@@ -9,7 +9,7 @@
             <parameter name="cartId" force="true">%cart_id%</parameter>
         </data>
     </route>
-    <route url="/V1/guest-carts/:cartId/set-order-cid-field" method="PUT">
+    <route url="/V1/guest-carts/:cartId/set-order-cid-fields" method="PUT">
         <service class="Mugar\CustomerIdentificationDocument\Api\CidFieldsGuestRepositoryInterface" method="saveCidFields"/>
         <resources>
             <resource ref="anonymous" />
@@ -24,7 +24,7 @@
             <parameter name="cartId" force="true">%cart_id%</parameter>
         </data>
     </route>
-    <route url="/V1/guest-carts/:cartId/set-order-cid-billing-field" method="PUT">
+    <route url="/V1/guest-carts/:cartId/set-order-cid-billing-fields" method="PUT">
         <service class="Mugar\CustomerIdentificationDocument\Api\CidFieldsGuestRepositoryInterface" method="saveCidBillingFields"/>
         <resources>
             <resource ref="anonymous" />
