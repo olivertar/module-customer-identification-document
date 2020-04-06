@@ -10,8 +10,9 @@ define([
     'Magento_Checkout/js/model/error-processor',
     'Magento_Checkout/js/model/cart/cache',
     'Mugar_CustomerIdentificationDocument/js/model/checkout/cid-billing-form',
-    'Magento_Checkout/js/model/payment/additional-validators'
-], function(ko, $, urlFormatter, Component, customer, quote, urlBuilder, errorProcessor, cartCache, formData, additionalValidators) {
+    'Magento_Checkout/js/model/payment/additional-validators',
+    'Mugar_CustomerIdentificationDocument/js/model/billing-validator'
+], function(ko, $, urlFormatter, Component, customer, quote, urlBuilder, errorProcessor, cartCache, formData, additionalValidators, customValidator) {
     'use strict';
 
     return Component.extend({
@@ -20,6 +21,7 @@ define([
         initialize: function () {
             var self = this;
             this._super();
+            additionalValidators.registerValidator(customValidator);
             formData = this.source.get('cidBillingForm');
             var formDataCached = cartCache.get('cid-billing-form');
             if (formDataCached) {

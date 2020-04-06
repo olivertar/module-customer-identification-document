@@ -165,9 +165,6 @@
                                                                 </item>
                                                             </item>
                                                         </item>
-                                                        <item name="billingValidator" xsi:type="array">
-                                                            <item name="component" xsi:type="string">Mugar_CustomerIdentificationDocument/js/view/billing-validation</item>
-                                                        </item>
                                                     </item>
                                         		</item>
                                         	</item>
